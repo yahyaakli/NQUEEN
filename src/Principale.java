@@ -9,11 +9,9 @@ public class Principale {
 	static int NbBacktrack=0;
 	static int NbEchec = 0;
 	public static void main(String[] args) {
-	//	long t1= System.currentTimeMillis();
-		solve(10,0);
+		solveAndShowFirstSolution(10,0);
 		System.out.println(count);
-	/*	long t2= System.currentTimeMillis();
-		System.out.println(t2-t1);*/
+
 		System.out.println("Nombre d'echec: "+NbEchec);
 		System.out.println("Nombre de backtrack: "+NbBacktrack);
 		System.out.println("Nombre de noeuds: "+NbNoeuds);
@@ -38,12 +36,12 @@ public class Principale {
 		}
 		return ListePossible;
 	}
-
-	public static int solve (int n,int col){
+	
+	public static int solveFirstSolution (int n,int col){
 		if (Solution.size()==n){
 			count++;
 			if(!firstsolution) {
-				afficher(Solution);
+				showSolution(Solution);
 				firstsolution = true;
 			}
 		}else{
@@ -58,9 +56,9 @@ public class Principale {
 		}
 		return count;
 	}
-	public static void solve2 (int n,int col){
+	public static void solveAllSolutions (int n,int col){
 		if (Solution.size()==n){
-			afficher(Solution);
+			showSolution(Solution);
 		}else{
 			Vector<Integer>Valeurs=position(n,col);
 			for (int i=0;i<Valeurs.size();i++){
@@ -73,7 +71,7 @@ public class Principale {
 			}
 		}
 	}
-	public static void afficher(Vector<Integer> Sol) {
+	public static void showSolution(Vector<Integer> Sol) {
 		for(int i=0;i<Sol.size();i++) {
 			for(int j=0;j<Sol.size();j++){
 				int a = Sol.indexOf(i);
